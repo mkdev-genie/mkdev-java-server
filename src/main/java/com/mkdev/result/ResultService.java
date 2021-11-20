@@ -24,4 +24,9 @@ public class ResultService {
             .orElseThrow(() -> new IllegalArgumentException("해당 타입은 존재하지 않습니다. typeId=" + requestDto.getTypeId()));
         return new TypeResponseDto(type);
     }
+
+    @Transactional(readOnly = true)
+    public ResultResponseDto count() {
+        return new ResultResponseDto(resultRepository.count());
+    }
 }
