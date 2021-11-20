@@ -1,6 +1,8 @@
 package com.mkdev.question;
 
 import com.mkdev.choice.Choice;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +15,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Question {
+public class Question implements Serializable {
+
+    private static final long serialVersionUID = 1905122041950251207L;
 
     @Id
     private int index;
@@ -25,6 +29,6 @@ public class Question {
     private String content;
 
     @OneToMany
-    @JoinColumn(name = "qid")
-    private List<Choice> choices;
+    @JoinColumn(name = "qid", referencedColumnName = "qid")
+    private List<Choice> choice = new ArrayList<>();
 }

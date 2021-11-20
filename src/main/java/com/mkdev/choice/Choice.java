@@ -1,5 +1,6 @@
 package com.mkdev.choice;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,7 +10,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Choice {
+public class Choice implements Serializable {
+
+    private static final long serialVersionUID = 2405172041950251807L;
 
     @Id
     private int index;
